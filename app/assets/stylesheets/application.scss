@@ -40,3 +40,13 @@
     max-height: 100vh;
   }
 }
+
+.post-card {
+  transition: 0.3s;
+  border-bottom: 1px solid $secondary !important;
+
+  &:hover {
+    box-shadow: 0 0 0 2px $primary !important;
+    border-color: $primary !important;
+  }
+}
