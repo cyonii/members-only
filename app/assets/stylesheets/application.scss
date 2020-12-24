@@ -14,10 +14,29 @@
  *= require_self
  */
 
+@import "variables";
 @import "bootstrap";
 
 #forum-layout {
   @include media-breakpoint-up('md') {
     height: 100vh;
+  }
+}
+
+.av-32 {
+  height: 32px;
+  width: 32px;
+}
+
+.av-48 {
+  height: 48px;
+  width: 48px;
+}
+
+#left {
+  @include media-breakpoint-up('md') {
+    // position: sticky;
+    height: 100vh;
+    max-height: 100vh;
   }
 }

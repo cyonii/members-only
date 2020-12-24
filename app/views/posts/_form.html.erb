@@ -1,22 +1,23 @@
 <%= form_with(model: post, local: true) do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <small class="text-danger">
+        <i><b><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</b></i>
+      </small>
 
-      <ul>
+      <ul class="list-group list-group-flush">
         <% post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+          <li class="list-group-item text-danger lh-1"><small><i><%= message %></i></small></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
+  <div class="col-12 mb-3">
+    <%= form.text_area :body, class: "form-control" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="col-12">
+    <%= form.submit class: "btn btn-primary shadow-sm rounded-1" %>
   </div>
 <% end %>
