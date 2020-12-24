@@ -33,9 +33,9 @@
   width: 48px;
 }
 
-#left {
+#left,
+#right {
   @include media-breakpoint-up('md') {
-    // position: sticky;
     height: 100vh;
     max-height: 100vh;
   }

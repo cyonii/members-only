@@ -40,69 +40,75 @@
           </div>
         </div>
         <div class="col-md-8 col-lg-9">
-          <div class="row border-bottom bg-light">
-            <div class="col-12">
-              <nav class="nav justify-content-end py-3">
-                <%= link_to 'New Post', new_post_path, class: "nav-link btn btn-primary px-5" %>
-              </nav>
-            </div>
-          </div>
 
+          <div class="row h-100">
+            <div class="col-md-8 col-lg-7">
 
-          <!-- Flash messages start -->
-          <div class="row">
-            <div class="col">
-              <% if flash[:notice] %>
-                <div class="alert alert-info alert-dismissible mb-0 rounded-0 border-info fade show" role="alert">
-                  <div class="container">
-                    <p class="mb-0"><%= notice %></p>
+            <!-- Flash messages start -->
+            <div class="row">
+              <div class="col">
+                <% if flash[:notice] %>
+                  <div class="alert alert-info alert-dismissible mb-0 rounded-0 border-info fade show" role="alert">
+                    <div class="container">
+                      <p class="mb-0"><%= notice %></p>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
-                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-              <% end %>
-              <% if flash[:alert] %>
-                <div class="alert alert-danger alert-dismissible mb-0 rounded-0 border-danger fade show" role="alert">
-                  <div class="container">
-                    <p class="mb-0"><%= alert %></p>
+                <% end %>
+                <% if flash[:alert] %>
+                  <div class="alert alert-danger alert-dismissible mb-0 rounded-0 border-danger fade show" role="alert">
+                    <div class="container">
+                      <p class="mb-0"><%= alert %></p>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
-                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-              <% end %>
+                <% end %>
+              </div>
             </div>
-          </div>
-          <!-- Flash messages end -->
+            <!-- Flash messages end -->
 
-          <div class="row gx-lg-5">
-            <div class="col-md-8 pt-3">
+            <div class="row border-bottom bg-light mb-3">
+              <div class="col-12">
+                <nav class="nav justify-content-end py-3">
+                  <%= link_to 'New Post', new_post_path, class: "nav-link btn btn-primary px-5" %>
+                </nav>
+              </div>
+            </div>
 
               <%= yield %>
 
             </div>
-            <div class="col-md-4 py-3">
-              <% if @members %>
-              <h6 class="fw-bold fs-4">Members</h6>
+            <div class="col-md-4 col-lg-5 border-left">
+              <div class="sticky-top py-3 d-flex flex-column h-100" id="right">
+                <% if @members %>
+                <h6 class="fw-bold fs-4">Members</h6>
 
-              <% if member_signed_in? %>
-              <div class="card shadow">
-                <div class="card-body">
-                  <ul class="list-group list-group-flush">
-                    <% @members.each do | member | %>
-                    <li class="list-group-item d-flex">
-                      <%= gravatar_image_tag(member.email, size: 32, alt: member.name, class: "rounded-circle av-32") %>
+                <% if member_signed_in? %>
+                <div class="card shadow">
+                  <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                      <% @members.each do | member | %>
+                      <li class="list-group-item d-flex">
+                        <%= gravatar_image_tag(member.email, size: 32, alt: member.name, class: "rounded-circle av-32") %>
 
-                      <p class="mb-0 fw-light ml-2 lh-1">
-                        <b><%= member.name %> <br></b>
-                        <small><i>Posts: <%= member.posts.count %></i></small>
-                      </p>
-                    </li>
-                    <% end %>
-                  </ul>
+                        <p class="mb-0 fw-light ml-2 lh-1">
+                          <b><%= member.name %> <br></b>
+                          <small><i>Posts: <%= member.posts.count %></i></small>
+                        </p>
+                      </li>
+                      <% end %>
+                    </ul>
+                  </div>
                 </div>
+                <% else %>
+                <h6 class="mb-0 text-muted">Log in to see members</h6>
+                <% end %>
+                <% elsif !member_signed_in? %>
+                <h3 class="text-muted my-auto fs-6 fw-bold">
+                  Log in to see author's details
+                </h3>
+                <% end %>
               </div>
-              <% else %>
-              <h6 class="mb-0 text-muted">Log in to see members</h6>
-              <% end %>
-              <% end %>
             </div>
           </div>
         </div>
