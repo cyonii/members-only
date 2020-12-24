@@ -14,7 +14,7 @@
       <div class="row" id="forum-layout">
         <div class="col-md-4 col-lg-3 bg-dark">
           <div class="sticky-top h-100 py-3 d-flex flex-column align-items-center" id="left">
-            <%= link_to "MEMBERS ONLY", root_path, class: "fs-3 fw-bold mb-4 bg-light text-decoration-none px-2 rounded-2" %>
+            <%= link_to "Members Only", root_path, class: "fs-3 fw-bold mb-4 alert-primary border border-primary border-3 text-decoration-none px-2 rounded-2" %>
 
             <% if member_signed_in? %>
               <%= link_to edit_member_registration_path do %>
