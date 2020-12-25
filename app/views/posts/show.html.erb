@@ -22,8 +22,11 @@
 
   </h6>
 
+  <% if member_signed_in? %>
   <% @post.comments.each do | comment | %>
     <%= render partial: 'comment_card', locals: {comment: comment} %>
   <% end %>
-
+  <% else %>
+  <p class="text-muted">Log in to see comments</p>
+  <% end %>
 </div>
