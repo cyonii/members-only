@@ -2,7 +2,7 @@ module PostsHelper
   def gravatar(post)
     alt = post.member.username
     email = post.member.email
-    gravatar_image_tag(email, alt: alt, class: 'rounded av-48') if member_signed_in?
+    gravatar_image_tag(email, alt: alt, class: 'rounded av-48 mr-3') if member_signed_in?
   end
 
   def flash_message
