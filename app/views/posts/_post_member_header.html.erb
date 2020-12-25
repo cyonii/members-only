@@ -1,6 +1,6 @@
 <div class="d-flex">
-  <%= gravatar_image_tag(@post.member.email, size: 32, alt: @post.member.name, class: "rounded-circle av-48") %>
-  <div class="ml-3">
+  <%= gravatar(@post.member, "av-48 mr-3") %>
+  <div class="">
     <p class="mb-0 lh-1">
       <i class="text-muted">by:</i> <b><%= @post.member.name %></b> | @<%= @post.member.username %>
     </p>
