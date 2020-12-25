@@ -1,5 +1,5 @@
 <%= link_to edit_member_registration_path do %>
-  <%= gravatar_image_tag(current_member.email, size: 32, alt: current_member.username, class: "rounded-circle av-48") %>
+  <%= gravatar_image_tag(current_member.email, size: 32, alt: current_member.username, class: "rounded av-48") %>
 <% end %>
 <h5 class="text-white mt-2 mb-0"><%= current_member.name %></h5>
 <small class="text-secondary lh-1"><i>Member since: <%= current_member.created_at.year %></i></small>
