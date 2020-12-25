@@ -2,12 +2,12 @@
 <ul class="list-group list-group-flush">
   <% @members.each do | member | %>
   <li class="list-group-item d-flex">
-    <%= gravatar(member, "av-32") %>
+    <%= gravatar(member, "av-32 mr-2") %>
 
-    <p class="mb-0 fw-light ml-2 lh-1">
-      <b><%= member.name %> <br></b>
-      <small><i>Posts: <%= member.posts.count %></i></small>
-    </p>
+    <div class="d-flex flex-column">
+      <h6 class="mb-0 lh-1"><%= member.name %></h6>
+      <p class="mb-0 lh-1 fs-14 text-muted">Posts: <%= member.posts.count %></p>
+    </div>
   </li>
   <% end %>
 </ul>
