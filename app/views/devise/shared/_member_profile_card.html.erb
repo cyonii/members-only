@@ -1,0 +1,14 @@
+<%= link_to edit_member_registration_path do %>
+  <%= gravatar_image_tag(current_member.email, size: 32, alt: current_member.username, class: "rounded av-48") %>
+<% end %>
+<h5 class="text-white mt-2 mb-0"><%= current_member.name %></h5>
+<small class="text-secondary lh-1"><i>Member since: <%= current_member.created_at.year %></i></small>
+
+<hr>
+
+<h6 class="card-title mb-0 lh-1 text-secondary">Total Posts</h6>
+<p class="mb-0 fs-1 fw-bold lh-1 text-white"><%= current_member.posts.count %></p>
+
+<hr>
+
+<%= link_to "Sign out", destroy_member_session_path, method: :delete, class: "btn btn-danger shadow-sm px-5" %>

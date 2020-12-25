@@ -13,3 +13,40 @@
  *= require_tree .
  *= require_self
  */
+
+@import "variables";
+@import "bootstrap";
+
+#forum-layout {
+  @include media-breakpoint-up('md') {
+    height: 100vh;
+  }
+}
+
+.av-32 {
+  height: 32px;
+  width: 32px;
+}
+
+.av-48 {
+  height: 48px;
+  width: 48px;
+}
+
+#left,
+#right {
+  @include media-breakpoint-up('md') {
+    height: 100vh;
+    max-height: 100vh;
+  }
+}
+
+.post-card {
+  transition: 0.3s;
+  border-bottom: 1px solid $secondary !important;
+
+  &:hover {
+    box-shadow: 0 0 0 2px $primary !important;
+    border-color: $primary !important;
+  }
+}

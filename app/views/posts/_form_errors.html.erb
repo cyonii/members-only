@@ -1,0 +1,11 @@
+<div id="error_explanation">
+  <small class="text-danger">
+    <i><b><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</b></i>
+  </small>
+
+  <ul class="list-group list-group-flush">
+    <% @post.errors.full_messages.each do |message| %>
+      <li class="list-group-item text-danger lh-1"><small><i><%= message %></i></small></li>
+    <% end %>
+  </ul>
+</div>
