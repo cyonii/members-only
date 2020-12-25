@@ -20,54 +20,14 @@
           <div class="sticky-top h-100 py-3 d-flex flex-column align-items-center" id="left">
             <%= link_to "Members Only", root_path, class: "fs-3 fw-bold mb-4 alert-primary border border-primary border-3 text-decoration-none px-2 rounded-2" %>
 
-            <% if member_signed_in? %>
-              <%= link_to edit_member_registration_path do %>
-                <%= gravatar_image_tag(current_member.email, size: 32, alt: current_member.name, class: "rounded-circle av-48") %>
-              <% end %>
-              <h5 class="text-white mt-2 mb-0"><%= current_member.name %></h5>
-              <small class="text-secondary lh-1"><i>Member since: <%= current_member.created_at.year %></i></small>
-
-              <hr>
-
-              <h6 class="card-title mb-0 lh-1 text-secondary">Total Posts</h6>
-              <p class="mb-0 fs-1 fw-bold lh-1 text-white"><%= current_member.posts.count %></p>
-
-              <hr>
-
-              <%= link_to "Sign out", destroy_member_session_path, method: :delete, class: "btn btn-danger shadow-sm px-5" %>
-            <% else %>
-              <div class="my-auto">
-                <%= link_to "Log in", new_member_session_path, class: "btn btn-outline-primary fw-bold px-5 mb-3" %>
-                <%= link_to "Sign up", new_member_registration_path, class: "btn text-white fw-bold px-5 mb-3" %>
-              </div>
-            <% end %>
+            <%= render member_profile %>
           </div>
         </div>
 
         <!-- Center -->
         <div class="col-md-4 col-lg-5">
-          <!-- Flash messages start -->
-          <div class="row">
-            <div class="col">
-              <% if flash[:notice] %>
-                <div class="alert alert-info alert-dismissible mb-0 rounded-0 border-info fade show" role="alert">
-                  <div class="container">
-                    <p class="mb-0"><%= notice %></p>
-                  </div>
-                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-              <% end %>
-              <% if flash[:alert] %>
-                <div class="alert alert-danger alert-dismissible mb-0 rounded-0 border-danger fade show" role="alert">
-                  <div class="container">
-                    <p class="mb-0"><%= alert %></p>
-                  </div>
-                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-              <% end %>
-            </div>
-          </div>
-          <!-- Flash messages end -->
+          <!-- Flash messages -->
+          <%= flash_message %>
 
           <div class="row border-bottom bg-light mb-3">
             <div class="col-12">
@@ -84,11 +44,7 @@
         <!-- Right -->
         <div class="col-md-4 col-lg-4 border-left">
           <div class="sticky-top py-3 d-flex flex-column h-100" id="right">
-            <% if member_signed_in? and @members %>
-              <%= render 'devise/shared/members' %>
-            <% elsif !member_signed_in? %>
-              <p class="text-muted fw-bold m-auto">Log in to see members.</p>
-            <% end %>
+            <%= members_list %>
           </div>
         </div>
       </div>
