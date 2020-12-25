@@ -38,6 +38,7 @@
   @include media-breakpoint-up('md') {
     height: 100vh;
     max-height: 100vh;
+    overflow-y: auto;
   }
 }
 
@@ -70,4 +71,8 @@
 
 .fs-14 {
   font-size: 14px;
+}
+
+.lh-small {
+  line-height: 1.3;
 }
