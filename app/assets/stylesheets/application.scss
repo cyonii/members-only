@@ -45,8 +45,21 @@
   transition: 0.3s;
   border-bottom: 1px solid $secondary !important;
 
+  .card-body {
+    .post-member {
+      transition: 0.3s;
+    }
+
+    &:hover {
+      .post-member {
+        transform: translate(-3px,-3px);
+        box-shadow: 4px 4px 0 $dark, -5px -5px 0 lighten($primary, 20%), 8px 8px 0 lighten($dark, 50%) !important;
+      }
+    }
+  }
+
   &:hover {
-    box-shadow: 0 0 0 2px $primary !important;
+    box-shadow: 1px 1px 0 2px $primary !important;
     border-color: $primary !important;
   }
 }
