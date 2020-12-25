@@ -86,7 +86,7 @@
           <div class="sticky-top py-3 d-flex flex-column h-100" id="right">
             <% if member_signed_in? and @members %>
               <%= render 'devise/shared/members' %>
-            <% else %>
+            <% elsif !member_signed_in? %>
               <p class="text-muted fw-bold m-auto">Log in to see members.</p>
             <% end %>
           </div>
