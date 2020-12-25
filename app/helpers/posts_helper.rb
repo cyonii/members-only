@@ -27,4 +27,18 @@ module PostsHelper
   def members_list
     render 'devise/shared/members' if member_signed_in? and @members
   end
+
+  def member_header
+    render 'posts/member_header' if member_signed_in?
+  end
+
+  def post_owner_actions(post)
+    render('posts/post_owner_actions', post: post) if post_owner(post)
+  end
+
+  private
+
+  def post_owner(post)
+    member_signed_in? and post.member == current_member
+  end
 end
