@@ -4,7 +4,7 @@
     <title>MembersOnly</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -88,10 +88,10 @@
 
                 <% if member_signed_in? %>
                 <div class="card shadow">
-                  <div class="card-body">
+                  <div class="card-body p-2">
                     <ul class="list-group list-group-flush">
                       <% @members.each do | member | %>
-                      <li class="list-group-item d-flex">
+                      <li class="list-group-item px-0 d-flex">
                         <%= gravatar_image_tag(member.email, size: 32, alt: member.name, class: "rounded-circle av-32") %>
 
                         <p class="mb-0 fw-light ml-2 lh-1">
