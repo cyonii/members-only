@@ -1,5 +1,5 @@
 <h1 class="fs-4 fw-bold">Posts feeds</h1>
 
 <% @posts.each do |post| %>
-  <%= render partial: 'post', locals: {post: post} %>
+  <%= render partial: 'post_card', locals: {post: post} %>
 <% end %>
