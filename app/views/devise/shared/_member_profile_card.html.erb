@@ -6,8 +6,16 @@
 
 <hr>
 
-<h6 class="card-title mb-0 lh-1 text-secondary">Total Posts</h6>
-<p class="mb-0 fs-1 fw-bold lh-1 text-white"><%= current_member.posts.count %></p>
+<div class="row">
+  <div class="col-6">
+    <h6 class="fw-light mb-0 lh-1 text-secondary">Posts</h6>
+    <p class="mb-0 fs-3 lh-1 text-white"><%= current_member.posts.count %></p>
+  </div>
+  <div class="col-6">
+    <h6 class="fw-light mb-0 lh-1 text-secondary">Comments</h6>
+    <p class="mb-0 fs-3 lh-1 text-white"><%= current_member.comments.count %></p>
+  </div>
+</div>
 
 <hr>
 
