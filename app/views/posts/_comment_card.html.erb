@@ -1,0 +1,13 @@
+<div class="media">
+  <div class="media-body d-flex">
+    <%= gravatar(comment.member, 'av-32 mr-2') %>
+    <div class="">
+      <p class="mb-1 fs-14 lh-1">
+        <span class="fw-bold"><%= comment.member.name %></span> | @<%= comment.member.username %>
+        <br>
+        <i class="fw-light text-muted">Posted at:</i> <span class="text-primary"><%= comment.created_at %></span>
+      </p>
+      <p class="card-text mb-0 mt-2"><%= comment.text %></p>
+    </div>
+  </div>
+</div>
