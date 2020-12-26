@@ -1,13 +1,11 @@
 <h6 class="fw-bold fs-4">Members</h6>
-<ul class="list-group list-group-flush">
-  <% @members.each do | member | %>
-  <li class="list-group-item d-flex">
-    <%= gravatar_image_tag(member.email, size: 32, alt: member.username, class: "rounded av-32") %>
+<% @members.each do | member | %>
+<div class="d-flex rounded member-card mb-3 bg-light px-2 py-2">
+  <%= gravatar(member, "av-32 mr-2 rounded-circle") %>
 
-    <p class="mb-0 fw-light ml-2 lh-1">
-      <b><%= member.name %> <br></b>
-      <small><i>Posts: <%= member.posts.count %></i></small>
-    </p>
-  </li>
-  <% end %>
-</ul>
+  <div class="d-flex flex-column">
+    <h6 class="mb-0 lh-1"><%= member.name %></h6>
+    <p class="fw-light mb-0 lh-1 fs-14 text-muted">Posts: <%= member.posts.count %></p>
+  </div>
+</div>
+<% end %>

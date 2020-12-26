@@ -11,4 +11,23 @@
     <%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
 
+  <!-- Post comments -->
+  <hr class="my-5">
+  <h6 class="fw-bold mb-3">
+    Comments
+    <span class="fw-light">
+      -
+      (<b><%= @post.comments.count %></b>)
+    </span>
+  </h6>
+
+  <%= render 'comments/form', comment: @comment %>
+
+  <% if member_signed_in? %>
+  <% @post.comments.order('created_at DESC').each do | comment | %>
+    <%= render partial: 'comment_card', locals: {comment: comment} %>
+  <% end %>
+  <% else %>
+  <p class="text-muted">Log in to see comments</p>
+  <% end %>
 </div>
