@@ -19,7 +19,7 @@ end
 ```
 
 ## Live Demo
-Checkout the live demo at [Live](https://sleepy-garden-20041.herokuapp.com)
+Checkout the live demo at [Live](https://clubsville.herokuapp.com/)
 
 ## Built With
 - Rails
