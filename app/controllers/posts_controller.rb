@@ -56,6 +56,8 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
+    Comment.where(post_id: @post.id).destroy_all
+
     @post.destroy
     respond_to do |format|
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
