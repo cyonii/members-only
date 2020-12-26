@@ -19,11 +19,12 @@
       -
       (<b><%= @post.comments.count %></b>)
     </span>
-
   </h6>
 
+  <%= render 'comments/form', comment: @comment %>
+
   <% if member_signed_in? %>
-  <% @post.comments.each do | comment | %>
+  <% @post.comments.order('created_at DESC').each do | comment | %>
     <%= render partial: 'comment_card', locals: {comment: comment} %>
   <% end %>
   <% else %>
