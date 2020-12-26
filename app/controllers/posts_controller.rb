@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-  include PostsHelper
   before_action :set_post, only: %i[show edit update destroy]
   before_action :authenticate_member!, except: %i[index show]
 
@@ -17,7 +16,9 @@ class PostsController < ApplicationController
 
   # GET /posts/1
   # GET /posts/1.json
-  def show; end
+  def show
+    @comment = Comment.new
+  end
 
   # GET /posts/1/edit
   def edit; end
@@ -55,6 +56,8 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
+    Comment.where(post_id: @post.id).destroy_all
+
     @post.destroy
     respond_to do |format|
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
