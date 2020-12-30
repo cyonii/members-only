@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
   before_action :authenticate_member!, except: %i[index show]
+  before_action :owner?, only: %i[edit destroy]
 
   # GET /posts
   # GET /posts.json
@@ -73,5 +74,13 @@ class PostsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def post_params
     params.require(:post).permit(:body, :title)
+  end
+
+  # Only allow post owner to take action
+  def owner?
+    return if current_member == @post.member
+
+    flash[:alert] = 'Unauthorized request'
+    redirect_to @post
   end
 end
