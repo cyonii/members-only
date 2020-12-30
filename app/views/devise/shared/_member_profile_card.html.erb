@@ -1,9 +1,12 @@
-<%= link_to edit_member_registration_path do %>
-  <%= gravatar(current_member, "av-48") %>
-<% end %>
-<h5 class="text-white mt-2 mb-0"><%= current_member.name %></h5>
-<small class="text-secondary lh-1"><i>Member since: <%= current_member.created_at.year %></i></small>
-
+<div class="d-flex flex-md-column align-items-md-center">
+  <%= link_to edit_member_registration_path do %>
+    <%= gravatar(current_member, "av-48 mr-2 mr-md-0 mb-md-2") %>
+  <% end %>
+  <div class="text-md-center lh-1">
+    <h5 class="text-white mb-0"><%= current_member.name %></h5>
+    <small class="text-secondary lh-1"><i>Member since: <%= current_member.created_at.year %></i></small>
+  </div>
+</div>
 <hr>
 
 <div class="row">
