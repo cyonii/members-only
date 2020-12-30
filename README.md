@@ -5,7 +5,7 @@ This is a simple forum where only signed in users can see the details of fellow 
 ## Overview
 In this project, authentication has been implemented for members of the forum using the `Devise` ruby gem. The `Member` model is used to create the members of the forum, while the `Post` model is used to create a post which must be linked to a `Member` through it's `member_id` field, a post object also has `title` and `body` fields.
 
-This is the simple representation of the Association between the `Member` and `Post` models
+This is the simple representation of the Association between the `Member`, `Post`, and `Comment` models
 ```
 class Member < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
@@ -16,10 +16,14 @@ class Post < ApplicationRecord
   belongs_to :member
 end
 
+class Comment < ApplicationRecord
+  belongs_to :post
+  belongs_to :member
+end
 ```
 
 ## Live Demo
-Checkout the live demo at [Live](https://clubsville.herokuapp.com/)
+Checkout the live demo at [Live](https://clubcamp.herokuapp.com)
 
 ## Built With
 - Rails
