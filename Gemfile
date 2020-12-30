@@ -28,6 +28,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'bootstrap', '~> 5.0.0.alpha3'
 gem 'devise', '~> 4.7', '>= 4.7.3'
+gem 'faker'
 gem 'gravatar_image_tag', '~> 1.2'
 
 group :development, :test do
@@ -46,7 +47,6 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   gem 'better_errors', '~> 2.9', '>= 2.9.1'
-  gem 'faker'
 end
 
 group :test do
