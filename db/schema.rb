@@ -13,9 +13,9 @@
 ActiveRecord::Schema.define(version: 2020_12_25_164454) do
 
   create_table "comments", force: :cascade do |t|
-    t.text "text", default: "", null: false
-    t.integer "post_id", null: false
-    t.integer "member_id", null: false
+    t.text "text", null: false
+    t.integer "post_id"
+    t.integer "member_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["member_id"], name: "index_comments_on_member_id"
@@ -40,11 +40,10 @@ ActiveRecord::Schema.define(version: 2020_12_25_164454) do
   create_table "posts", force: :cascade do |t|
     t.text "body", null: false
     t.string "title", null: false
+    t.integer "member_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "member_id", null: false
+    t.index ["member_id"], name: "index_posts_on_member_id"
   end
 
-  add_foreign_key "comments", "members"
-  add_foreign_key "comments", "posts"
 end
