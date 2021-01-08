@@ -24,7 +24,7 @@
   <%= render 'comments/form', comment: @comment %>
 
   <% if member_signed_in? %>
-  <% @post.comments.order('created_at DESC').each do | comment | %>
+  <% @post.comments.each do | comment | %>
     <%= render partial: 'comment_card', locals: {comment: comment} %>
   <% end %>
   <% else %>
