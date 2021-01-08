@@ -77,7 +77,7 @@ class PostsController < ApplicationController
 
   # Only allow post owner to take action
   def owner?
-    return if current_member == @post.member
+    return if current_member == @post.author
 
     flash[:alert] = 'Unauthorized request'
     redirect_to @post

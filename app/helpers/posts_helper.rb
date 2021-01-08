@@ -42,6 +42,6 @@ module PostsHelper
   private
 
   def post_owner(post)
-    member_signed_in? and post.member == current_member
+    member_signed_in? and post.author == current_member
   end
 end
