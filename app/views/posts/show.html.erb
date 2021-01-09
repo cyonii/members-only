@@ -1,12 +1,12 @@
 <div class="px-lg-3">
-  <%= post_member_header %>
+  <%= post_user_header %>
   <h6 class="mb-1 fw-bold"><%= @post.title %></h6>
   <p>
     <%= @post.body %>
   </p>
 
   <%= link_to 'Back', posts_path %> |
-  <% if member_signed_in? and current_member == @post.author %>
+  <% if user_signed_in? and current_user == @post.author %>
     <%= link_to 'Edit', edit_post_path(@post) %> |
     <%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
@@ -23,7 +23,7 @@
 
   <%= render 'comments/form', comment: @comment %>
 
-  <% if member_signed_in? %>
+  <% if user_signed_in? %>
   <% @post.comments.each do | comment | %>
     <%= render partial: 'comment_card', locals: {comment: comment} %>
   <% end %>

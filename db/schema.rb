@@ -15,14 +15,23 @@ ActiveRecord::Schema.define(version: 2020_12_25_164454) do
   create_table "comments", force: :cascade do |t|
     t.text "text", null: false
     t.integer "post_id"
-    t.integer "member_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["member_id"], name: "index_comments_on_member_id"
     t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "members", force: :cascade do |t|
+  create_table "posts", force: :cascade do |t|
+    t.text "body", null: false
+    t.string "title", null: false
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -32,18 +41,9 @@ ActiveRecord::Schema.define(version: 2020_12_25_164454) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.string "username"
-    t.index ["email"], name: "index_members_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
-    t.index ["username"], name: "index_members_on_username", unique: true
-  end
-
-  create_table "posts", force: :cascade do |t|
-    t.text "body", null: false
-    t.string "title", null: false
-    t.integer "member_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["member_id"], name: "index_posts_on_member_id"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
 end

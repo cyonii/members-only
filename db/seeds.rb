@@ -8,7 +8,7 @@
 require 'faker'
 
 5.times do
-  m = Member.new
+  m = User.new
   m.name = Faker::Name.first_name + ' ' + Faker::Name.last_name
   m.username = Faker::Internet.username
   m.email = Faker::Internet.email
@@ -20,14 +20,14 @@ end
   post = Post.new
   post.title = Faker::Book.title
   post.body = Faker::Lorem.paragraph(sentence_count: [3, 4, 5, 6].sample, supplemental: true, random_sentences_to_add: 4)
-  post.author = Member.all.sample
+  post.author = User.all.sample
   post.save
 end
 
 127.times do
   c = Comment.new
   c.post = Post.all.sample
-  c.member = Member.all.sample
+  c.user = User.all.sample
   c.text = Faker::Lorem.paragraph(sentence_count: [3, 4, 5, 6].sample, supplemental: true, random_sentences_to_add: 4)
   c.save
 end

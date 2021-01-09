@@ -1,11 +1,11 @@
 module PostsHelper
-  def gravatar(member, extra_class = nil)
-    alt = member.username
-    email = member.email
+  def gravatar(user, extra_class = nil)
+    alt = user.username
+    email = user.email
     css_class = 'rounded'
     css_class += " #{extra_class}" if extra_class
 
-    gravatar_image_tag(email, alt: alt, class: css_class) if member_signed_in?
+    gravatar_image_tag(email, alt: alt, class: css_class) if user_signed_in?
   end
 
   def flash_message
@@ -21,18 +21,18 @@ module PostsHelper
     render 'posts/form_errors' if @post.errors.any?
   end
 
-  def member_profile_card
-    return 'devise/shared/member_profile_card' if member_signed_in?
+  def user_profile_card
+    return 'devise/shared/user_profile_card' if user_signed_in?
 
     'devise/shared/auth'
   end
 
-  def members_list
-    render 'devise/shared/members_list' if member_signed_in? and @members
+  def users_list
+    render 'devise/shared/users_list' if user_signed_in? and @users
   end
 
-  def post_member_header
-    render 'posts/post_member_header' if member_signed_in?
+  def post_user_header
+    render 'posts/post_user_header' if user_signed_in?
   end
 
   def post_owner_actions(post)
@@ -42,6 +42,6 @@ module PostsHelper
   private
 
   def post_owner(post)
-    member_signed_in? and post.author == current_member
+    user_signed_in? and post.author == current_user
   end
 end

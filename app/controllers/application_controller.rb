@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
-  before_action :set_members
+  before_action :set_users
 
   private
 
-  def set_members
-    @members = Member.all
+  def set_users
+    @users = User.all
   end
 end

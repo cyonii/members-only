@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
-  before_action :authenticate_member!, except: %i[index show]
+  before_action :authenticate_user!, except: %i[index show]
   before_action :owner?, only: %i[edit destroy]
 
   # GET /posts
@@ -26,7 +26,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = current_member.posts.build(post_params)
+    @post = current_user.posts.build(post_params)
 
     respond_to do |format|
       if @post.save
@@ -77,7 +77,7 @@ class PostsController < ApplicationController
 
   # Only allow post owner to take action
   def owner?
-    return if current_member == @post.author
+    return if current_user == @post.author
 
     flash[:alert] = 'Unauthorized request'
     redirect_to @post

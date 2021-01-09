@@ -1,4 +1,4 @@
 one:
   title: Post one title
   body: Post one body
-  member_id: one
+  user_id: one

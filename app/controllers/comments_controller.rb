@@ -1,11 +1,11 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[destroy]
-  before_action :authenticate_member!
+  before_action :authenticate_user!
 
   # POST /comments
   # POST /comments.json
   def create
-    @comment = current_member.comments.build(comment_params)
+    @comment = current_user.comments.build(comment_params)
     @comment.post_id = params[:post_id]
 
     if @comment.save

@@ -20,7 +20,7 @@
           <div class="sticky-top h-100 py-3 d-flex flex-column align-items-center" id="left">
             <%= link_to "Members Only", root_path, class: "fs-3 fw-bold mb-4 alert-primary border border-primary border-3 text-decoration-none px-2 rounded-2" %>
 
-            <%= render member_profile_card %>
+            <%= render user_profile_card %>
           </div>
         </div>
 
@@ -44,7 +44,7 @@
         <!-- Right -->
         <div class="col-md-4 col-lg-4 border-left">
           <div class="sticky-top p-3 d-flex flex-column h-100" id="right">
-            <%= members_list %>
+            <%= users_list %>
           </div>
         </div>
       </div>

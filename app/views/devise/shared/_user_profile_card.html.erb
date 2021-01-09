@@ -1,0 +1,25 @@
+<div class="d-flex flex-md-column align-items-md-center">
+  <%= link_to edit_user_registration_path do %>
+    <%= gravatar(current_user, "av-48 mr-2 mr-md-0 mb-md-2") %>
+  <% end %>
+  <div class="text-md-center lh-1">
+    <h5 class="text-white mb-0"><%= current_user.name %></h5>
+    <small class="text-secondary lh-1"><i>Member since: <%= current_user.created_at.year %></i></small>
+  </div>
+</div>
+<hr>
+
+<div class="row">
+  <div class="col-6 text-center">
+    <h6 class="fw-light mb-0 lh-1 text-secondary">Posts</h6>
+    <p class="mb-0 fs-3 lh-1 text-white"><%= current_user.posts.count %></p>
+  </div>
+  <div class="col-6 text-center">
+    <h6 class="fw-light mb-0 lh-1 text-secondary">Comments</h6>
+    <p class="mb-0 fs-3 lh-1 text-white"><%= current_user.comments.count %></p>
+  </div>
+</div>
+
+<hr>
+
+<%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-danger shadow-sm px-5" %>
