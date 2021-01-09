@@ -5,4 +5,7 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :posts
   has_many :comments
+
+  validates :name, :username, presence: true
+  validates :username, uniqueness: true
 end
