@@ -3,3 +3,9 @@ one:
   username: userone
   email: userone@example.com
   encrypted_password: password
+
+two:
+  name: User Two
+  username: usertwo
+  email: usertwo@example.com
+  encrypted_password: password

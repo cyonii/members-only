@@ -7,7 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-5.times do
+# Create users
+100.times do
   m = User.new
   m.name = Faker::Name.first_name + ' ' + Faker::Name.last_name
   m.username = Faker::Internet.username
@@ -16,18 +17,45 @@ require 'faker'
   m.save
 end
 
-10.times do
-  post = Post.new
+# Create forums
+20.times do
+  forum = Forum.new({
+    name: Faker::Lorem.sentence(word_count: [2,3].sample),
+    description: Faker::Lorem.sentence(word_count: 10),
+    admin: User.all.sample
+    })
+  forum.save
+end
+
+# Add members to forums
+2.times do
+  User.all.each do |user|
+    forum = Forum.all.sample
+
+    unless forum.members.include?(user)
+      forum.members << user
+    end
+  end
+end
+
+# Create posts for forums
+100.times do
+  forum = Forum.all.sample
+  post = forum.posts.new
   post.title = Faker::Book.title
   post.body = Faker::Lorem.paragraph(sentence_count: [3, 4, 5, 6].sample, supplemental: true, random_sentences_to_add: 4)
-  post.author = User.all.sample
+  post.author = forum.members.sample
   post.save
 end
 
-127.times do
-  c = Comment.new
-  c.post = Post.all.sample
-  c.user = User.all.sample
-  c.text = Faker::Lorem.paragraph(sentence_count: [3, 4, 5, 6].sample, supplemental: true, random_sentences_to_add: 4)
-  c.save
+# Create comments for posts
+300.times do
+  forum = Forum.all.sample
+  post = forum.posts.sample
+  if post
+    comment = post.comments.new
+    comment.user = forum.members.sample
+    comment.text = Faker::Lorem.paragraph(sentence_count: [3, 4, 5, 6].sample, supplemental: true, random_sentences_to_add: 4)
+    comment.save
+  end
 end

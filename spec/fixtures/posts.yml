@@ -1,4 +1,5 @@
 one:
   title: Post one title
   body: Post one body
-  user_id: one
+  user_id: two
+  forum_id: one

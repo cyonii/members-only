@@ -17,11 +17,14 @@ RSpec.describe User, type: :model do
 
     it 'saves new valid user to database' do
       expect(subject.save).to be(true)
-      expect(described_class.count).to eq(2)
+      expect(described_class.count).to eq(3)
     end
   end
 
   context 'associations' do
+    it { should have_many(:forums).through(:memberships) }
+    it { should have_many(:administered_forums).class_name(:Forum) }
+    it { should have_many(:memberships).dependent(:destroy) }
     it { should have_many(:posts) }
     it { should have_many(:comments) }
   end

@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  fixtures :users
+  fixtures :users, :forums
 
-  let(:params) { { title: 'Post title', body: 'Post body', author: users(:one) } }
+  let(:params) { { title: 'Post title', body: 'Post body', author: users(:one), forum: forums(:one) } }
   subject { described_class.new(params) }
 
   describe 'validations' do
@@ -24,6 +24,7 @@ RSpec.describe Post, type: :model do
 
   describe 'associations' do
     it { should belong_to(:author).class_name(:User).with_foreign_key(:user_id) }
+    it { should belong_to(:forum) }
     it { should have_many(:comments).class_name(:Comment).dependent(:destroy) }
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_25_164454) do
+ActiveRecord::Schema.define(version: 2020_12_25_164455) do
 
   create_table "comments", force: :cascade do |t|
     t.text "text", null: false
@@ -22,12 +22,32 @@ ActiveRecord::Schema.define(version: 2020_12_25_164454) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "forums", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_forums_on_user_id"
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "forum_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["forum_id"], name: "index_memberships_on_forum_id"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.text "body", null: false
     t.string "title", null: false
     t.integer "user_id"
+    t.integer "forum_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["forum_id"], name: "index_posts_on_forum_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -46,4 +66,6 @@ ActiveRecord::Schema.define(version: 2020_12_25_164454) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "memberships", "forums"
+  add_foreign_key "memberships", "users"
 end
