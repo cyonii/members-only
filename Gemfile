@@ -36,6 +36,9 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.4'
+  # Test gems
+  gem 'database_cleaner'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -54,6 +57,7 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
+  gem 'shoulda-matchers', '4.0.0.rc1'
   gem 'webdrivers'
 end
 

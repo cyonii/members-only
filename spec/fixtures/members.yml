@@ -1,0 +1,5 @@
+one:
+  name: User One
+  username: userone
+  email: userone@example.com
+  encrypted_password: password
