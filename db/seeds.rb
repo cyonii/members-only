@@ -20,7 +20,7 @@ end
 # Create forums
 20.times do
   forum = Forum.new({
-    name: Faker::Lorem.sentence(word_count: [2,3].sample),
+    name: Faker::Movie.title,
     description: Faker::Lorem.sentence(word_count: 10),
     admin: User.all.sample
     })
