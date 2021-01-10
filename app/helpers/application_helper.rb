@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def left_column
-    render 'layouts/left_column' if user_signed_in? and @forums
+    render 'layouts/left_column' if user_signed_in?
   end
 
   def gravatar(user, extra_class = nil)
