@@ -11,4 +11,8 @@ class User < ApplicationRecord
 
   validates :name, :username, presence: true
   validates :username, uniqueness: true
+
+  def received_comments
+    Comment.where('user_id', id)
+  end
 end

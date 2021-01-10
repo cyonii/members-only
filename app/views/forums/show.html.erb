@@ -17,3 +17,9 @@
 
 <%= link_to 'Edit', edit_forum_path(@forum) %> |
 <%= link_to 'Back', forums_path %>
+
+<hr>
+
+<% @forum.posts.each do |post| %>
+  <%= render partial: 'posts/post_card', locals: {post: post} %>
+<% end %>

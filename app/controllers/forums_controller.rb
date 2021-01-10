@@ -1,10 +1,11 @@
 class ForumsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_forum, only: %i[show edit update destroy]
 
   # GET /forums
   # GET /forums.json
   def index
-    @forums = Forum.all
+    # @forums = Forum.all
   end
 
   # GET /forums/1

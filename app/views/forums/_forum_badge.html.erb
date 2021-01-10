@@ -1,0 +1,6 @@
+<div class="card hover-1 h-100">
+  <div class="card-body d-flex flex-column align-items-start p-2">
+    <h6 class="card-title mb-1 lh-1 fw-light"><%= forum.name %></h6>
+    <%= link_to "#{forum.members.count} members", forum_path(forum), class: 'stretched-link text-decoration-none fs-12 mt-auto alert-primary rounded-pill px-2' %>
+  </div>
+</div>

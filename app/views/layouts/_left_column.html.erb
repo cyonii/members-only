@@ -1,0 +1,27 @@
+<div class="py-5">
+  <div class="d-flex mb-5">
+    <%= link_to edit_user_registration_path do %>
+      <%= gravatar(current_user, "av-48") %>
+    <% end %>
+    <div class="lh-1 ml-2">
+      <h5 class="mb-0 fs-6 fw-bold"><%= current_user.name %></h5>
+      <p class="text-secondary fw-light lh-1"><i>Member since: <%= current_user.created_at.year %></i></p>
+    </div>
+  </div>
+
+  <h6 class="mb-0 fw-bold">Participation stats</h6>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item px-0 bg-transparent">
+      Posts <span class="float-right"><%= current_user.posts.count %></span>
+    </li>
+    <li class="list-group-item px-0 bg-transparent">
+      Comments given <span class="float-right"><%= current_user.comments.count %></span>
+    </li>
+    <li class="list-group-item px-0 bg-transparent">
+      Comments received <span class="float-right"><%= @received_comments.count %></span>
+    </li>
+  </ul>
+
+  <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-danger shadow-sm mt-4 px-5" %>
+
+</div>

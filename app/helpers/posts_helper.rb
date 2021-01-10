@@ -21,16 +21,6 @@ module PostsHelper
     render 'posts/form_errors' if @post.errors.any?
   end
 
-  def user_profile_card
-    return 'devise/shared/user_profile_card' if user_signed_in?
-
-    'devise/shared/auth'
-  end
-
-  def users_list
-    render 'devise/shared/users_list' if user_signed_in? and @users
-  end
-
   def post_user_header
     render 'posts/post_user_header' if user_signed_in?
   end

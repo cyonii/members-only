@@ -1,0 +1,42 @@
+<div class="row h-100">
+  <div class="col-md-7 py-3" id="main_column">
+    <h1 class="fs-4 fw-bold">Feeds</h1>
+
+    <div class="row row-cols-md-2 g-3">
+      <% @forums.each do |forum| %>
+      <div class="col">
+        <div class="card shadow-sm hover-1 h-100">
+          <div class="card-body d-flex flex-column">
+            <h6 class="card-title"><%= forum.name %></h6>
+            <p class="card-text lh-1 fw-light"><%= forum.description %></p>
+
+            <p class="mb-0 mt-auto">
+              <%= link_to "#{forum.members.count} members", forum, class: 'stretched-link text-decoration-none link-secondary rounded-pill bg-light px-2 border fw-bold fs-14' %>
+            </p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-md-5 py-3 px-lg-4" id="side_column">
+    <h3 class="fs-5 fw-light text-muted">Forums you belong in</h3>
+    <div class="row row-cols-2 row-cols-xl-3 g-2 mb-5">
+      <% @forums.each do | forum | %>
+      <div class="col">
+        <%= render 'forums/forum_badge', forum: forum %>
+      </div>
+      <% end %>
+    </div>
+
+    <h4 class="fs-5 fw-light text-muted">Suggested forums</h4>
+    <div class="row row-cols-2 row-cols-xl-3 g-2 mb-4">
+      <% @suggested_forums.each do | forum | %>
+      <div class="col">
+        <%= render 'forums/forum_badge', forum: forum %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
