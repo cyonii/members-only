@@ -17,7 +17,7 @@ module ApplicationHelper
   end
 
   def flash_message
-    render 'posts/flash' if flash.present?
+    render 'layouts/flash' if flash.present?
   end
 
   def flash_class

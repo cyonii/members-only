@@ -11,6 +11,6 @@ class ApplicationController < ActionController::Base
   private
 
   def set_user_data
-    @comments_received = current_user.comments_received
+    @comments_received = current_user.comments_received if current_user
   end
 end

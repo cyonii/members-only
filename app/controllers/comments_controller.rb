@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     else
       flash[:alert] = 'Error while adding comment'
     end
-    redirect_to post_path(@comment.post)
+    redirect_back(fallback_location: forum_post_path(@comment.post.forum, @comment.post))
   end
 
   # DELETE /comments/1
@@ -21,8 +21,9 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
 
+    post = Post.find(params[:post_id])
     flash[:notice] = 'Comment deleted'
-    redirect_to post_path(id: params[:post_id])
+    redirect_back(fallback_location: forum_post_path(post.forum, post))
   end
 
   private

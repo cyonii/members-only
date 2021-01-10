@@ -1,16 +1,16 @@
-<div class="card post-card border-secondary shadow-sm mb-2">
+<div class="card post-card hover-1 mb-2">
   <div class="card-body d-flex position-relative">
-    <%= gravatar(post.author, "av-48 post-user mr-3") %>
-    <div class="card-text d-flex flex-column">
+    <%= gravatar(post.author, "av-48 rounded-circle post-author mr-3") %>
+    <div class="d-flex flex-column">
       <h6 class="fw-bold mb-1">
-        <%= link_to forum_post_pth, class: "stretched-link card-link text-decoration-none" do %>
+        <%= link_to forum_post_path(@forum, post), class: "stretched-link card-link text-decoration-none" do %>
           <% post.title %>
         <% end %>
       </h6>
-      <p class="card-text mb-0"><%= post.body %></p>
+      <p class="card-text mb-0 lh-sm"><%= post.body %></p>
     </div>
   </div>
-  <div class="card-footer d-flex">
+  <div class="card-footer border-0 d-flex">
     <%= post_owner_actions(post) %>
 
     <div class="ml-auto text-muted">

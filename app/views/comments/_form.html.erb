@@ -1,4 +1,4 @@
-<%= form_for [ @post, @comment ] do |form| %>
+<%= form_for [@post.forum, @post, @comment ] do |form| %>
   <% if @comment.errors.any? %>
     <div id="error_explanation">
       <h6><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h6>

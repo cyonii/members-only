@@ -1,33 +1,47 @@
-<div class="px-lg-3">
-  <%= post_user_header %>
-  <h6 class="mb-1 fw-bold"><%= @post.title %></h6>
-  <p>
-    <%= @post.body %>
-  </p>
+<div class="row h-100">
+  <div class="col-md-7 py-3 px-md-3" id="main_column">
+    <div class="px-lg-3">
+      <div class="d-flex">
+        <%= gravatar(@post.author, "av-48 mr-3") %>
+        <div class="">
+          <p class="mb-0 lh-1">
+            <i class="text-muted">Author:</i> <b><%= @post.author.name %></b> | @<%= @post.author.username %>
+          </p>
 
-  <%= link_to 'Back', posts_path %> |
-  <% if user_signed_in? and current_user == @post.author %>
-    <%= link_to 'Edit', edit_post_path(@post) %> |
-    <%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
-  <% end %>
+          <p class="fst-italic text-muted">Posted at: <b class="text-primary"><%= @post.created_at %></b></p>
+        </div>
+      </div>
 
-  <!-- Post comments -->
-  <hr class="my-5">
-  <h6 class="fw-bold mb-3">
-    Comments
-    <span class="fw-light">
-      -
-      (<b><%= @post.comments.count %></b>)
-    </span>
-  </h6>
 
-  <%= render 'comments/form', comment: @comment %>
+      <h6 class="mb-1 fw-bold"><%= @post.title %></h6>
+      <p>
+        <%= @post.body %>
+      </p>
 
-  <% if user_signed_in? %>
-  <% @post.comments.each do | comment | %>
-    <%= render partial: 'comment_card', locals: {comment: comment} %>
-  <% end %>
-  <% else %>
-  <p class="text-muted">Log in to see comments</p>
-  <% end %>
+      <%= link_to 'Back to Forum', forum_path(@post.forum), class: 'text-decoration-none' %> |
+      <% if user_signed_in? and current_user == @post.author %>
+        <%= link_to 'Edit', edit_forum_post_path(@post.forum, @post) %> |
+        <%= link_to 'Delete', forum_post_path(@post.forum, @post), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+
+      <!-- Post comments -->
+      <hr class="my-5">
+      <%= render 'comments/form' %>
+
+      <h6 class="fw-bold mb-3">
+        Comments
+        <span class="fw-light"> - (<b><%= @post.comments.count %></b>)</span>
+      </h6>
+
+
+      <% @post.comments.each do | comment | %>
+        <%= render partial: 'comments/comment_card', locals: {comment: comment} %>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div class="col-md-5 py-3 px-lg-4" id="side_column">
+
+  </div>
 </div>

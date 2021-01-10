@@ -1,4 +1,4 @@
-<%= form_with(model: @post, local: true) do |form| %>
+<%= form_for([@post.forum, @post]) do |form| %>
   <%= form_errors %>
 
   <div class="col-12 mb-3">

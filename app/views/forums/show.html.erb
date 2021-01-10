@@ -1,25 +1,38 @@
-<p id="notice"><%= notice %></p>
+<div class="row h-100">
+  <div class="col-md-7 py-3 px-md-3" id="main_column">
+    <% @forum.posts.each do |post| %>
+      <%= render partial: 'posts/post_card', locals: {post: post} %>
+    <% end %>
+  </div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @forum.name %>
-</p>
+  <div class="col-md-5 py-3 px-lg-4" id="side_column">
+    <div class="mb-5">
+      <h1 class="fs-4 fw-bold d-flex align-items-center">
+        <%= @forum.name %>
+        <div class="badge bg-secondary rounded-pill ml-2 bg-light py-1 text-muted fw-normal shadow-2">Forum</div>
+      </h1>
 
-<p>
-  <strong>Description:</strong>
-  <%= @forum.description %>
-</p>
+      <p>
+        <h6 class="fw-bold text-muted mb-1">Admin:</h6>
+        <div class="d-inline-flex shadow-2 px-2 py-1 bg-white rounded-pill">
+          <%= gravatar(@forum.admin, "av-24 mr-1 rounded-circle") %>
+          <b><%= @forum.admin.name %></b>
+        </div>
+      </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @forum.user_id %>
-</p>
+      <h6 class="fw-bold text-muted mb-1">Description:</h6>
+      <p class="lh-1"><%= @forum.description %></p>
 
-<%= link_to 'Edit', edit_forum_path(@forum) %> |
-<%= link_to 'Back', forums_path %>
+      <p>
+        <span class="fw-bold text-muted">Started:</span> <b><%= @forum.created_at %></b>
+      </p>
+    </div>
 
-<hr>
-
-<% @forum.posts.each do |post| %>
-  <%= render partial: 'posts/post_card', locals: {post: post} %>
-<% end %>
+    <h3 class="fs-5 text-muted">Members <span class="text-primary fw-light fs-6">- <%= @forum.members.count %></span></h3>
+    <div class="">
+      <% for member in @forum.members %>
+      <%= gravatar(member, "av-32 rounded-circle border-2 border-dark mb-1") %>
+      <% end %>
+    </div>
+  </div>
+</div>

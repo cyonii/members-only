@@ -28,8 +28,10 @@ header {
 
 // Layout
 #dashboard {
-  height: calc(100vh - 73px);
-  position: fixed;
+  @include media-breakpoint-up('md') {
+    height: calc(100vh - 73px);
+    position: fixed;
+  }
 
   #left_column,
   #right_column {
@@ -76,12 +78,12 @@ header {
   transition: 0.3s;
 
   .card-body {
-    .post-user {
+    .post-author {
       transition: 0.3s;
     }
 
     &:hover {
-      .post-user {
+      .post-author {
         transform: translate(-3px, -3px);
         box-shadow: 4px 4px 0 $dark, -5px -5px 0 lighten($primary, 20%), 8px 8px 0 lighten($dark, 50%) !important;
       }
@@ -111,6 +113,8 @@ header {
 
 // Effects
 .hover-1 {
+  transition: 0.3s;
+
   &:hover {
     box-shadow: 1px 1px 0 2px $primary !important;
     border-color: $primary !important;
@@ -120,4 +124,27 @@ header {
 .shadow-1 {
   box-shadow: 5px 5px 0 2px lighten($primary, 15%) !important;
   border-color: $primary !important;
+}
+
+.shadow-2 {
+  box-shadow: 1px 1px 0 2px darken($light, 15%) !important;
+  border-color: $light !important;
+}
+
+// Main alert
+.main-alert {
+  width: 320px;
+  max-width: 95%;
+  z-index: 1080;
+  top: 1rem;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  transition: 0.3s;
+
+  .btn-close {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
 }
