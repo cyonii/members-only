@@ -28,4 +28,14 @@ RSpec.describe User, type: :model do
     it { should have_many(:posts) }
     it { should have_many(:comments) }
   end
+
+  context 'scopes' do
+    it 'returns comments a user has received' do
+      forum = Forum.create(name: 'Bad boys asso', description: 'We bad', admin: subject)
+      forum.members << subject
+      post = forum.posts.create(title: 'Test Post', body: 'TPost body', author: subject)
+      post.comments.create(text: 'Hey guys', user: subject)
+      expect(subject.comments_received.count).to eq(1)
+    end
+  end
 end
