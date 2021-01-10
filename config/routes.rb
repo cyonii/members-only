@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { 'registrations': 'registrations' }
   root 'application#index'
   resources :forums do
-    resources :posts, except: [:index] do
+    resources :posts, except: [:index, :new] do
       resources :comments, only: %i[create destroy]
     end
   end
