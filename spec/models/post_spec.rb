@@ -9,7 +9,7 @@ RSpec.describe Post, type: :model do
   describe 'validations' do
     it { should validate_length_of(:title).is_at_least(1) }
     it { should validate_length_of(:title).is_at_most(80) }
-    it { should validate_length_of(:body).is_at_most(1200) }
+    it { should validate_length_of(:body).is_at_most(256) }
     it { should validate_length_of(:body).is_at_least(1) }
 
     it 'validates post with valid data' do
