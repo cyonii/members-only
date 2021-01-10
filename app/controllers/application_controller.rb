@@ -1,16 +1,16 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
-  before_action :set_forums
+  before_action :set_user_data
 
   def index
-    @comments_received = current_user.comments_received
-    @suggested_forums = Forum.where("user_id != #{current_user.id}").limit(6)
     render template: 'layouts/index'
   end
 
   private
 
-  def set_forums
+  def set_user_data
     @forums = current_user.forums if current_user
+    @comments_received = current_user.comments_received
+    @suggested_forums = Forum.where("user_id != #{current_user.id}").limit(6)
   end
 end
