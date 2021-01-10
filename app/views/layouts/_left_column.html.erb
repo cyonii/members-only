@@ -12,6 +12,12 @@
   <h6 class="mb-0 fw-bold">Participation stats</h6>
   <ul class="list-group list-group-flush">
     <li class="list-group-item px-0 bg-transparent">
+      Administered<span class="float-right"><%= current_user.administered_forums.count %></span>
+    </li>
+      <li class="list-group-item px-0 bg-transparent">
+        Membership<span class="float-right"><%= current_user.memberships.count %></span>
+      </li>
+    <li class="list-group-item px-0 bg-transparent">
       Posts <span class="float-right"><%= current_user.posts.count %></span>
     </li>
     <li class="list-group-item px-0 bg-transparent">
