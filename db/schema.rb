@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(version: 2020_12_25_164455) do
 
   create_table "posts", force: :cascade do |t|
     t.text "body", null: false
-    t.string "title", null: false
     t.integer "user_id"
     t.integer "forum_id"
     t.datetime "created_at", precision: 6, null: false

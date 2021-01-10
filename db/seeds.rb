@@ -42,7 +42,6 @@ end
 100.times do
   forum = Forum.all.sample
   post = forum.posts.new
-  post.title = Faker::Book.title
   post.body = Faker::Lorem.paragraph(sentence_count: [3, 4, 5, 6].sample, supplemental: true, random_sentences_to_add: 4)
   post.author = forum.members.sample
   post.save

@@ -3,12 +3,10 @@ require 'rails_helper'
 RSpec.describe Post, type: :model do
   fixtures :users, :forums
 
-  let(:params) { { title: 'Post title', body: 'Post body', author: users(:one), forum: forums(:one) } }
+  let(:params) { { body: 'Post body', author: users(:one), forum: forums(:one) } }
   subject { described_class.new(params) }
 
   describe 'validations' do
-    it { should validate_length_of(:title).is_at_least(1) }
-    it { should validate_length_of(:title).is_at_most(80) }
     it { should validate_length_of(:body).is_at_most(256) }
     it { should validate_length_of(:body).is_at_least(1) }
 
