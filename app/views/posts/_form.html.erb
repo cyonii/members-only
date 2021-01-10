@@ -1,11 +1,11 @@
-<%= form_for([@post.forum, @post]) do |form| %>
+<%= form_for [post.forum, post] do |form| %>
   <%= form_errors %>
 
   <div class="col-12 mb-3">
-    <%= form.text_area :body, class: "form-control", rows: 5 %>
+    <%= form.text_area :body, class: "form-control", rows: 4, placeholder: "What's going on...", required: true %>
   </div>
 
-  <div class="col-12">
-    <%= form.submit class: "btn btn-primary shadow-sm rounded-1" %>
+  <div class="col-12 d-flex justify-content-end">
+    <%= form.submit 'Post', class: "btn btn-primary fw-bold px-5 shadow-sm rounded-1" %>
   </div>
 <% end %>

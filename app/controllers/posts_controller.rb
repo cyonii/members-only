@@ -3,53 +3,34 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
   before_action :owner?, only: %i[edit destroy]
 
-  # GET /posts/1
-  # GET /posts/1.json
   def show
     @comment = Comment.new
   end
 
-  # GET /posts/1/edit
   def edit; end
 
-  # POST /posts
-  # POST /posts.json
   def create
     @post = current_user.posts.build(post_params)
+    @post.forum_id = params[:forum_id]
 
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to forum_post_path(@post), notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.save
+      redirect_to forum_post_path(@post.forum, @post), notice: 'Post was successfully created.'
+    else
+      redirect_back(fallback_location: forum_path(params[:forum_id], error: 'Error while saving.'))
     end
   end
 
-  # PATCH/PUT /posts/1
-  # PATCH/PUT /posts/1.json
   def update
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to forum_post_path(@post), notice: 'Post was successfully updated.' }
-        format.json { render :show, status: :ok, location: @post }
-      else
-        format.html { render :edit }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.update(post_params)
+      redirect_to forum_post_path(@post), notice: 'Post was successfully updated.'
+    else
+      redirect_back(fallback_location: root_path)
     end
   end
 
-  # DELETE /posts/1
-  # DELETE /posts/1.json
   def destroy
     @post.destroy
-    respond_to do |format|
-      format.html { redirect_to forum_url(params[:forum_id]), notice: 'Post was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to forum_url(params[:forum_id]), notice: 'Post was successfully destroyed.'
   end
 
   private
@@ -61,7 +42,7 @@ class PostsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def post_params
-    params.require(:post).permit(:body, :title)
+    params.require(:post).permit(:body)
   end
 
   # Only allow post owner to take action
