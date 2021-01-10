@@ -1,4 +1,4 @@
-<ul class="navbar-nav ml-auto fw-bold">
+<ul class="navbar-nav ml-auto fw-bold rounded-pill bg-white">
   <% unless user_signed_in? %>
   <li class="nav-item">
     <%= link_to "Sign in", new_user_session_path, class: "nav-link btn-primary text-white rounded w-100 px-md-5" %>
@@ -12,7 +12,7 @@
       <%= gravatar(current_user, "av-24 rounded-circle mr-1") %>
       <%= current_user.name %>
     </a>
-    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="currentUser">
+    <ul class="dropdown-menu dropdown-menu-right shadow-1 p-2" aria-labelledby="currentUser">
       <li><%= link_to 'Edit Profile', edit_user_registration_path, class: 'dropdown-item' %></li>
       <li><hr class="dropdown-divider"></li>
       <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'dropdown-item text-danger' %>
